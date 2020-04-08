@@ -25,7 +25,7 @@ class App extends React.Component {
     axios.get('https://api.github.com/users/Dino-Muratovic')
     //promises - console.log what you get
     .then(response => {
-      console.log(`response`, response.data)
+      // console.log(`response`, response.data)
     // set the state to be what you drilled to  
       this.setState({
         myInfo: response.data
@@ -41,7 +41,8 @@ class App extends React.Component {
      axios.get('https://api.github.com/users/Dino-Muratovic/followers')
      //promises - console.log what you get
      .then(response => {
-       console.log(`this is response inside grabFollowers`, response.data)
+    //  console.log(`this is response `, response.data)     
+
      // set the state to be what you drilled to  
        this.setState({
         followersInfo: response.data
@@ -49,8 +50,7 @@ class App extends React.Component {
      })
      .catch(error => {
        console.log(error)
-     })    
-
+     })   
   }
 
  
@@ -59,8 +59,14 @@ class App extends React.Component {
   render(){
     return (
       <>      
-      <MyInfoCard myInfo={this.state.myInfo} key={this.state.myInfo.id}/>
-      <CardContainer followersInfo={this.state.followersInfo}/>
+      <MyInfoCard
+      myInfo={this.state.myInfo} 
+      key={this.state.myInfo.id}
+      />
+
+      <CardContainer 
+      followersInfo={this.state.followersInfo}
+      />
       </>
     )
   }  

@@ -1,30 +1,37 @@
 import React from 'react';
 import './App.css';
 import UserCard from './UserCard';
+import styled from 'styled-components';
+
+
+const FollowersContainer = styled.div`
+  background-color:salmon;
+  width:80%;
+  margin:0 auto;
+`
 
 
 
 
-class CardContainer extends React.Component {  
-  constructor(props){    
-    super(props);  
-    console.log(`this is props inside Card Container`, props)   
-  
-  }
-  
-  
 
-  
 
- render(){
+const CardContainer = props =>{
+  // console.log(`props in CardContainer`, props);
     return (
       <>
-      <div>This is Card container</div>
-      <UserCard />
-      {console.log(`-->`, this.props.followersInfo)}
+      
+        <FollowersContainer>
+          {props.followersInfo.map((person)=>{
+            // console.log(`this is person`, person)
+            return (
+              <UserCard key={person.id} person={person} />
+            )
+          })}
+        </FollowersContainer> 
+        
       </>
     )
-  }  
 }
+
 
 export default CardContainer;
